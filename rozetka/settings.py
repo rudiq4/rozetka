@@ -22,6 +22,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
 ]
 
 ROOT_URLCONF = 'rozetka.urls'
@@ -67,9 +68,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -78,3 +79,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'  # user's upload images
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+CART_SESSION_ID = 'cart'
