@@ -15,6 +15,8 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'coupons',
+    'sorl.thumbnail'
 ]
 
 MIDDLEWARE = [
@@ -91,4 +93,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 CART_SESSION_ID = 'cart'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+THUMBNAIL_DEBUG=True
 
