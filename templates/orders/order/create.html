@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             {% csrf_token %}
-                            <input type="submit" class="btn btn-success" value=" Оформити замовлення">
+                            <input type="submit" class="btn_1" value=" Оформити замовлення">
                         </form>
                     </div>
                     <div class="col-lg-6">
@@ -53,13 +53,13 @@
                                     <li>
                                         <a href="#">{{ item.product.name }}
                                             <span class="middle">x {{ item.quantity }}</span>
-                                            <span class="last">{{ item.total_price|floatformat:"2" }}</span>
+                                            <span class="last">{{ item.total_price|floatformat:"2" }} грн.</span>
                                         </a>
                                     </li>
                                     {% if cart.coupon %}
                                         <li>
                                             "{{ cart.coupon.code }}" ({{ cart.coupon.discount }}% знижки)
-                                            <span>- ${{ cart.get_discount|floatformat:"2" }}</span>
+                                            <span>- {{ cart.get_discount|floatformat:"2" }} грн</span>
                                         </li>
                                     {% endif %}
                                 {% endfor %}
@@ -67,7 +67,7 @@
                             <ul class="list list_2">
                                 <li>
                                     <a href="#">Всього
-                                        <span>{{ cart.get_total_price_after_discount|floatformat:"2" }}</span>
+                                        <span>{{ cart.get_total_price_after_discount|floatformat:"2" }} грн.</span>
                                     </a>
                                 </li>
                             </ul>
