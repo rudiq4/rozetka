@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u5)(&z(*h0)#vb!%&=spe791ud8f863ga%8n35$9-5&p-(6nbl'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '4106aaab.ngrok.io']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,7 +16,8 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'coupons',
-    'sorl.thumbnail'
+    'crispy_forms',
+    # 'sorl.thumbnail'
 ]
 
 MIDDLEWARE = [
@@ -94,5 +95,5 @@ CART_SESSION_ID = 'cart'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-THUMBNAIL_DEBUG=True
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

@@ -16,10 +16,10 @@
                         <h4>Інформація про замовлення</h4>
                         <ul>
                             <li>
-                                <p>Номер замовлення</p><span> {{ order.id }}</span>
+                                <p>Номер замовлення</p><span>: {{ order.id }}</span>
                             </li>
                             <li>
-                                <p>Дата/час замовлення</p><span> {{ order.created }}</span>
+                                <p>Дата/час замовлення</p><span>: {{ order.created }}</span>
                             </li>
                         </ul>
                     </div>
@@ -29,22 +29,21 @@
                         <h4>Контактні данні покупця</h4>
                         <ul>
                             <li>
-                                <p>Імя</p><span>{{ order.first_name }}</span>
+                                <p>Імя</p><span>:{{ order.first_name }}</span>
                             </li>
                             <li>
-                                <p>Прізвище</p><span>{{ order.last_name }}</span>
+                                <p>Прізвище</p><span>:{{ order.last_name }}</span>
                             </li>
                             <li>
-                                <p>Адреса</p><span>{{ order.address }}</span>
+                                <p>Адреса</p><span>:{{ order.address }}</span>
                             </li>
                             <li>
-                                <p>Номер телефону</p><span>{{ order.phone }}</span>
+                                <p>Номер телефону</p><span>:{{ order.phone }}</span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="btn_1" href="{% url "shop:product_list" %}">На головну сторінку</a>
     </section>
 {% endblock %}
