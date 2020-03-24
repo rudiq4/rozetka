@@ -1,0 +1,81 @@
+{% extends "shop/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Оформлення замовлення
+{% endblock %}
+{% block content %}
+    <section class="checkout_area padding_top">
+        <div class="container">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Деталі замовлення</h3>
+                        <form class="order-form row contact_form" action="." method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form.first_name|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.last_name|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.phone|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.address|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.email|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.postal_code|as_crispy_field }}
+                                </div>
+                                <div class="col-md-12">
+                                    {{ form.details|as_crispy_field }}
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                            <input type="submit" class="btn_1" value=" Оформити замовлення">
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="order_box">
+                            <h2>Ваше замовлення</h2>
+                            <ul class="list">
+                                <li>
+                                    <a href="#">Товар
+                                        <span>Всього</span>
+                                    </a>
+                                </li>
+                                {% for item in cart %}
+                                    <li>
+                                        <a href="#">{{ item.product.name }}
+                                            <span class="middle">x {{ item.quantity }}</span>
+                                            <span class="last">{{ item.total_price|floatformat:"2" }} грн.</span>
+                                        </a>
+                                    </li>
+                                    {% if cart.coupon %}
+                                        <li>
+                                            "{{ cart.coupon.code }}" ({{ cart.coupon.discount }}% знижки)
+                                            <span>- {{ cart.get_discount|floatformat:"2" }} грн</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <ul class="list list_2">
+                                <li>
+                                    <a href="#">Всього
+                                        <span>{{ cart.get_total_price_after_discount|floatformat:"2" }} грн.</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

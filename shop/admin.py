@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product, ProductImage
+
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 0
 
 
 @admin.register(Category)
@@ -14,3 +19,12 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
+    inlines = [ProductImageInline]
+
+
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in ProductImage._meta.fields]
+
+    class Meta:
+        model = ProductImage
