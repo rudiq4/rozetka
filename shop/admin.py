@@ -14,8 +14,3 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
-
-#
-# @admin.register(Specification)
-# class SpecificationAdmin(admin.ModelAdmin):
-#     list_display = ['product', 'value']

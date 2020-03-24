@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u5)(&z(*h0)#vb!%&=spe791ud8f863ga%8n35$9-5&p-(6nbl'
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', '4106aaab.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', '9087b0c1.ngrok.io']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -93,7 +93,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-

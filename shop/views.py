@@ -22,5 +22,10 @@ def product_detail(request, id, slug):
     return render(request, 'shop/product/detail.html', {'product': product, 'cart_product_form': cart_product_form})
 
 
+# Other pages
 def test(request):
     return render(request, 'test.html')
+
+
+def terms(request):
+    return render(request, 'shop/other/terms_of_use.html')
