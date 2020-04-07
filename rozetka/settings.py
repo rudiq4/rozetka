@@ -3,7 +3,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u5)(&z(*h0)#vb!%&=spe791ud8f863ga%8n35$9-5&p-(6nbl'
 DEBUG = True
-ALLOWED_HOSTS = ['443c09f5.ngrok.io']
+ALLOWED_HOSTS = ['d9d74791.ngrok.io',
+                 '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

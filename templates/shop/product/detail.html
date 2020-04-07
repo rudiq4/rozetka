@@ -1,0 +1,54 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+{% block content %}
+    <div class="product_image_area section_padding">
+        <div class="container">
+            <div class="row s_product_inner justify-content-between">
+                <div class="col-lg-7 col-xl-7">
+                    <div class="product_slider_img">
+                        <div id="vertical">
+                            {% for image_item in product.productimage_set.all %}
+                                <div data-thumb="{{ image_item.image.url }}">
+                                    <img src="{{ image_item.image.url }}" alt="product photo">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-5">
+                    <div class="s_product_text">
+                        <h3>{{ product.name }}</h3>
+                        <h2>{{ product.price }} грн.</h2>
+                        <ul class="list">
+                            <li>
+                                <a class="active" href="{{ product.category.get_absolute_url }}">
+                                    <span>Категорія</span> : {{ product.category }}</a><br>
+                            </li>
+                            <li>
+                                <a class="active" href="#">
+                                    <span>Артикул</span> : {{ product.article }}</a><br>
+                            </li>
+                        </ul>
+
+                        {{ product.description|linebreaks }}
+
+                        <div class="card_area d-flex justify-content-between align-items-center">
+                            <div class="form-group">
+                                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                    {{ cart_product_form }}
+                                    {% csrf_token %}
+                                    <br>
+                                    <input type="submit" class="btn_3" value="В корзину">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

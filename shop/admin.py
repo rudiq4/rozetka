@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, ProductImage
+from .models import Category, Product, ProductImage, CustomerQuestions
 
 
 class ProductImageInline(admin.TabularInline):
@@ -28,3 +28,11 @@ class ProductImageAdmin(admin.ModelAdmin):
 
     class Meta:
         model = ProductImage
+
+
+@admin.register(CustomerQuestions)
+class CustomerQuestionsAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in CustomerQuestions._meta.fields]
+
+    class Meta:
+        model = CustomerQuestions

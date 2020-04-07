@@ -55,3 +55,17 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = 'Фотографія'
         verbose_name_plural = 'Фотографії'
+
+
+class CustomerQuestions(models.Model):
+    name = models.CharField('Ваше імя', max_length=100)
+    email = models.EmailField('E-mail')
+    subject = models.CharField('Тема листа', max_length=100)
+    text = models.TextField('Текст повідомлення')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Запитання'
+        verbose_name_plural = 'Запитання'

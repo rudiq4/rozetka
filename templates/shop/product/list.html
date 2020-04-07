@@ -1,0 +1,58 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Товари{% endif %}
+{% endblock %}
+{% block content %}
+    {#    {% include "shop/product/category.html" %}#}
+
+    <!--================Category Product Area =================-->
+    <section class="cat_product_area section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="left_sidebar_area">
+                        <aside class="left_widgets p_filter_widgets">
+                            <div class="l_w_title">
+                                <h3>Категорії</h3>
+                            </div>
+                            <div class="widgets_inner">
+                                <ul class="list">
+                                    {% for c in categories %}
+                                        <li>
+                                            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="row align-items-center latest_product_inner">
+                        {% for product in products %}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="single_product_item">
+                                    <a href="{{ product.get_absolute_url }}">
+                                        <img src="
+
+                                                {% if product.productimage_set %}{{ product.productimage_set.first.image.url }}
+                                                                                                {% else %}{% static "img/no_image.png" %}{% endif %}"
+                                             alt="product_image" id="product-image">
+                                    </a>
+
+                                    <div class="single_product_text">
+                                        <h4>{{ product.name }}</h4>
+                                        <h3>${{ product.price }}</h3>
+                                        <a href="{{ product.get_absolute_url }}" class="add_cart">+ деталі</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'shop/paginator.html' with page=products %}
+{% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from cart.forms import CartAddProductForm
+from shop.forms import CustomerQuestionForm
 
 
 def product_list(request, category_slug=None):
@@ -13,7 +14,7 @@ def product_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
-        paginator = Paginator(products, 3)
+        paginator = Paginator(products, 9)
         try:
             products = paginator.page(page)
         except PageNotAnInteger:
@@ -21,7 +22,7 @@ def product_list(request, category_slug=None):
         except EmptyPage:
             products = paginator.page(paginator.num_pages)
     else:
-        paginator = Paginator(products, 3)
+        paginator = Paginator(products, 9)
         try:
             products = paginator.page(page)
         except PageNotAnInteger:
@@ -45,3 +46,19 @@ def test(request):
 
 def terms(request):
     return render(request, 'shop/other/terms_of_use.html')
+
+
+# def contacts(request):
+#     return render(request, 'shop/other/contact.html')
+
+def contacts(request):
+    form = CustomerQuestionForm(request)
+    if request.method == 'POST':
+        form = CustomerQuestionForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return render(request, 'shop/other/contact_done.html')
+    else:
+        form = CustomerQuestionForm()
+    return render(request, 'shop/other/contact.html', {'form': form})
