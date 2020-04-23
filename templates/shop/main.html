@@ -1,0 +1,39 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{#{% load crispy_forms_tags %}#}
+{% block title %}
+    Головна
+{% endblock %}
+{% block content %}
+    <!-- banner part start-->
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="banner_slider owl-carousel">
+                        {% for top in top_orders %}
+                            <div class="single_banner_slider">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-8">
+                                        <div class="banner_text">
+                                            <div class="banner_text_iner">
+                                                <h1>{{ top.name }}</h1>
+                                                <p>{{ top.description }}</p>
+                                                <a href="{{ top.get_absolute_url }}" class="btn_2">Детальніше</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="banner_img d-none d-lg-block">
+                                        <img src="{{ top.productimage_set.first.image.url }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+{#                    <div class="slider-counter"></div>#}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
+{% endblock content %}

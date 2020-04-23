@@ -20,6 +20,10 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    FLAG_CHOICE = (
+        (1, 'Bestseller'),
+        (2, 'Top-orders'),
+    )
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name='Категорія')
     name = models.CharField('Назва товару', max_length=128, db_index=True)
     slug = models.SlugField(max_length=128, db_index=True)
@@ -30,6 +34,7 @@ class Product(models.Model):
     available = models.BooleanField('Наявність', default=True)
     created = models.DateTimeField('Створено', auto_now_add=True)
     updated = models.DateTimeField('Оновлено', auto_now=True)
+    flag = models.IntegerField('Маркер', choices=FLAG_CHOICE, blank=True, default=None, null=True)
 
     class Meta:
         verbose_name = 'Товар'

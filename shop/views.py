@@ -5,6 +5,14 @@ from cart.forms import CartAddProductForm
 from shop.forms import CustomerQuestionForm
 
 
+def main_page(request):
+    template = 'shop/main.html'
+    bestsellers = Product.objects.filter(flag=1)
+    top_orders = Product.objects.filter(flag=2)
+    print(top_orders)
+    return render(request, template, {'bestsellers': bestsellers, "top_orders": top_orders})
+
+
 def product_list(request, category_slug=None):
     template = 'shop/product/list.html'
     category = None
@@ -41,15 +49,14 @@ def product_detail(request, id, slug):
 
 # Other pages
 def test(request):
-    return render(request, 'test.html')
+    ip = request.META.get('REMOTE_ADDR')
+    browser = request.META.get('HTTP_USER_AGENT')
+    return render(request, 'test.html', {'ip': ip, 'browser': browser})
 
 
 def terms(request):
     return render(request, 'shop/other/terms_of_use.html')
 
-
-# def contacts(request):
-#     return render(request, 'shop/other/contact.html')
 
 def contacts(request):
     form = CustomerQuestionForm(request)
