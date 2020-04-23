@@ -30,10 +30,57 @@
                             </div>
                         {% endfor %}
                     </div>
-{#                    <div class="slider-counter"></div>#}
+                    {#                    <div class="slider-counter"></div>#}
                 </div>
             </div>
         </div>
     </section>
     <!-- banner part start-->
+    <!-- feature_part start-->
+    <section class="feature_part padding_top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section_tittle text-center">
+                        <h2>Популярні товари</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-between">
+                {% for best in bestsellers %}
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="single_feature_post_text">
+                            <p>{{ best.category }}</p>
+                            <h3>{{ best.name }}</h3>
+                            <a href="{{ best.get_absolute_url }}" class="feature_btn">Детальніше <i
+                                    class="fas fa-play"></i></a>
+                            <img src="{{ best.productimage_set.first.image.url }}" alt="">
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- upcoming_event part start-->
+    <!-- subscribe_area part start-->
+    <section class="subscribe_area section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="subscribe_area_text text-center">
+                        <h5>Підпишіться на наші оновлення</h5>
+                        <h2>Залишайтесь на звязку щоб бути в курсі нових акцій і знижок</h2>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="введіть вашу пошту"
+                                   aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <a href="#" class="input-group-text btn_2" id="basic-addon2">підписатись</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::subscribe_area part end::-->
 {% endblock content %}

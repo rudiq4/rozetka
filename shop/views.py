@@ -9,7 +9,7 @@ def main_page(request):
     template = 'shop/main.html'
     bestsellers = Product.objects.filter(flag=1)
     top_orders = Product.objects.filter(flag=2)
-    print(top_orders)
+    # print(top_orders)
     return render(request, template, {'bestsellers': bestsellers, "top_orders": top_orders})
 
 
